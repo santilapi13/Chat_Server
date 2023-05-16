@@ -1,11 +1,11 @@
 package client.model;
 
-public class Informacion {
+public class CredencialesUsuario {
     private String IP;
     private int puerto;
     private String username;
 
-    public Informacion(String IP, int puerto, String username) {
+    public CredencialesUsuario(String IP, int puerto, String username) {
         this.IP = IP;
         this.puerto = puerto;
         this.username = username;

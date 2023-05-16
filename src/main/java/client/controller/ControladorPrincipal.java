@@ -1,6 +1,6 @@
 package client.controller;
 
-import client.model.Informacion;
+import client.model.CredencialesUsuario;
 import client.view.IVista;
 import client.view.VentanaPrincipal;
 
@@ -53,8 +53,8 @@ public class ControladorPrincipal implements ActionListener {
                 String puerto = vista.getPuertoIP();
                 Usuario.getInstance().setUsername(((VentanaPrincipal) vista).getUsername());
                 int puertoInt = Integer.parseInt(puerto);
-                Informacion informacionReceptor = new Informacion(ip, puertoInt, "");
-                Usuario.getInstance().solicitarChat(informacionReceptor);
+                CredencialesUsuario credencialesUsuarioReceptor = new CredencialesUsuario(ip, puertoInt, "");
+                Usuario.getInstance().solicitarChat(credencialesUsuarioReceptor);
             }
             if (comando.equalsIgnoreCase("INICIAR CHAT")) {
                 ControladorChat.getInstance().nuevaVentana();

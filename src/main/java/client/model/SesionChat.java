@@ -4,22 +4,22 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-public class Sesion implements GestorMensajes {
+public class SesionChat implements GestorMensajes {
     private LocalDate fecha;
     private ArrayList<Mensaje> mensajes = new ArrayList<Mensaje>();
-    private Informacion local;
-    private Informacion remoto;
+    private CredencialesUsuario local;
+    private CredencialesUsuario remoto;
 
-    public Informacion getRemoto() {
+    public CredencialesUsuario getRemoto() {
         return remoto;
     }
 
     @Override
-    public Informacion getLocal() {
+    public CredencialesUsuario getLocal() {
         return local;
     }
 
-    public Sesion(Informacion local, Informacion remoto) {
+    public SesionChat(CredencialesUsuario local, CredencialesUsuario remoto) {
         this.fecha = LocalDate.now();
         this.local = local;
         this.remoto = remoto;

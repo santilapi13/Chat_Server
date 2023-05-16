@@ -15,25 +15,25 @@ import java.util.ArrayList;
  */
 
 public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorConexion {
-    private Informacion informacion;
+    private CredencialesUsuario credencialesUsuario;
     private Socket socket;
     private ServerSocket socketServer;
     private InputStreamReader entradaSocket;
     private PrintWriter salida;
     private BufferedReader entrada;
     private boolean escuchando;
-    private ArrayList<Sesion> sesionesAnteriores;
-    private Sesion sesionActual;
+    private ArrayList<SesionChat> sesionesAnteriores;
+    private SesionChat sesionChatActual;
 
     private boolean solicitando = false;
 
      //PATRON SINGLETON
     private static Usuario instance;
     private Usuario() throws UnknownHostException {
-        this.informacion = new Informacion(InetAddress.getLocalHost().getHostAddress(), 1234, "");
+        this.credencialesUsuario = new CredencialesUsuario(InetAddress.getLocalHost().getHostAddress(), 1234, "");
         this.escuchando = false;
         this.sesionesAnteriores = new ArrayList<>();
-        this.sesionActual = null;
+        this.sesionChatActual = null;
     }
     public static Usuario getInstance() throws UnknownHostException {
         if (instance == null)
@@ -42,41 +42,46 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
     }
 
      //GETTERS Y SETTERS
-    public Informacion getInformacion() {
-        return informacion;
+    public CredencialesUsuario getInformacion() {
+        return credencialesUsuario;
     }
     public String getIP() {
-        return this.informacion.getIP();
+        return this.credencialesUsuario.getIP();
     }
     public int getPuerto() {
-        return this.informacion.getPuerto();
+        return this.credencialesUsuario.getPuerto();
     }
     public String getUsername() {
-        return this.informacion.getUsername();
+        return this.credencialesUsuario.getUsername();
     }
     public void setPuerto(int puerto) {
-        this.informacion.setPuerto(puerto);
+        this.credencialesUsuario.setPuerto(puerto);
     }
     public void setUsername(String username) {
-        this.informacion.setUsername(username);
+        this.credencialesUsuario.setUsername(username);
     }
     public Socket getSocket() {
         return this.socket;
     }
-    public Sesion getSesionActual() {
-        return sesionActual;
+    public SesionChat getSesionActual() {
+        return sesionChatActual;
     }
     @Override
-    public void setSesionActual(Sesion sesionActual) {
-        this.sesionActual = sesionActual;
+    public void setSesionActual(SesionChat sesionChatActual) {
+        this.sesionChatActual = sesionChatActual;
     }
     @Override
-    public void addNuevaSesion(Sesion sesion) {
-        this.sesionesAnteriores.add(sesion);
+    public void addNuevaSesion(SesionChat sesionChat) {
+        this.sesionesAnteriores.add(sesionChat);
     }
 
     public boolean isEscuchando() {
         return escuchando;
+    }
+
+    public void registrarseEnServidor(String IP, int puerto) throws IOException {
+        this.socket = new Socket(IP, puerto);
+        iniciarESSockets();
     }
 
     /**
@@ -103,16 +108,7 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
         this.entradaSocket = new InputStreamReader(socket.getInputStream());
         this.entrada = new BufferedReader(entradaSocket);
         this.salida = new PrintWriter(socket.getOutputStream(), true);
-        this.salida.println(this.informacion.getUsername());
-        String usernameRemoto = this.entrada.readLine();
-        this.sesionActual = new Sesion(this.informacion, new Informacion(this.socket.getInetAddress().toString(), this.socket.getPort(), usernameRemoto));
-
-        if (this.solicitando) {
-            ControladorChat.getInstance().nuevaVentana();
-        }
-        else{
-            ControladorPrincipal.getInstance().agregarUsuario(usernameRemoto);
-        }
+        this.salida.println(this.credencialesUsuario.getUsername());
     }
 
     /**
@@ -148,13 +144,25 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
      * Solicita un chat al usuario remoto. Crea un nuevo socket con el usuario remoto, en caso de que su IP y puerto sean validos.<br>
      * <b>Pre:</b> Los parametros IP y puerto deben ser validos.<br>
      * <b>Post:</b> Se ha creado un nuevo socket con el usuario remoto.
-     * @param informacionReceptor: La informacion del usuario remoto.
+     * @param credencialesUsuarioReceptor: La informacion del usuario remoto.
      * @throws IOException: Si hay un error al crear el socket.
      */
-    public void solicitarChat(Informacion informacionReceptor) throws IOException {
-        this.socket = new Socket(informacionReceptor.getIP(),informacionReceptor.getPuerto());
+    public void solicitarChat(CredencialesUsuario credencialesUsuarioReceptor) throws IOException {
+        // TODO: enviar solicitud al servidor (y cambiar javadoc)
         this.solicitando = true;
-        iniciarESSockets();
+        this.iniciarSesionChat();
+    }
+
+    private void iniciarSesionChat() throws IOException {
+        String usernameRemoto = this.entrada.readLine();
+        this.sesionChatActual = new SesionChat(this.credencialesUsuario, new CredencialesUsuario(this.socket.getInetAddress().toString(), this.socket.getPort(), usernameRemoto));
+
+        if (this.solicitando) {
+            ControladorChat.getInstance().nuevaVentana();
+        }
+        else{
+            ControladorPrincipal.getInstance().agregarUsuario(usernameRemoto);
+        }
     }
 
     /**
@@ -163,7 +171,7 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
      * @throws IOException: Si hay un error al enviar el mensaje.
      */
     public void enviarMensaje(String mensaje) throws IOException {
-        this.sesionActual.addMensaje(mensaje, true);
+        this.sesionChatActual.addMensaje(mensaje, true);
         this.salida.println(mensaje);
     }
 
@@ -174,7 +182,7 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
      */
     public String recibirMensaje() throws IOException {
         String mensaje = this.entrada.readLine();
-        this.sesionActual.addMensaje(mensaje, false);
+        this.sesionChatActual.addMensaje(mensaje, false);
         return mensaje;
     }
 
@@ -183,8 +191,8 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
      * @throws IOException: Si hay un error al cerrar los streams de entrada y salida del socket.
      */
     public void desconectar() throws IOException {
-        this.addNuevaSesion(this.sesionActual);
-        sesionActual = null;
+        this.addNuevaSesion(this.sesionChatActual);
+        sesionChatActual = null;
         this.socket.close();
         this.socket = null;
         this.salida = null;

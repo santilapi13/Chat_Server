@@ -1,7 +1,7 @@
 package client.model;
 
 public interface GestorSesiones {
-    Sesion getSesionActual();
-    void setSesionActual(Sesion sesionActual);
-    void addNuevaSesion(Sesion sesion);
+    SesionChat getSesionActual();
+    void setSesionActual(SesionChat sesionChatActual);
+    void addNuevaSesion(SesionChat sesionChat);
 }

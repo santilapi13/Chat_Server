@@ -47,7 +47,7 @@ public class VentanaPrincipal extends JFrame implements IVista, KeyListener, Mou
 	
 	
 	public VentanaPrincipal() {
-		setTitle("App de Mensajeria Instantanea");
+		setTitle("Ventana Principal para establecer conexion");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 300, 474, 414);
 		this.contentPane = new JPanel();
