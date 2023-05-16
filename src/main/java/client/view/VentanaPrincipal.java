@@ -27,8 +27,6 @@ public class VentanaPrincipal extends JFrame implements IVista, KeyListener, Mou
 	private JLabel lblNewLabel;
 	private JPanel panel;
 	private JPanel panel_1;
-	private JLabel lblNewLabel_1;
-	private JTextField textFieldNombre;
 	private JLabel lblNewLabel_2;
 	private JRadioButton rdbtnNewRadioButton;
 	private JPanel panel_2;
@@ -44,8 +42,9 @@ public class VentanaPrincipal extends JFrame implements IVista, KeyListener, Mou
 
 
 	private DefaultListModel<String> modeloUsuario = new DefaultListModel<String>();
-	
-	
+	private JLabel lblNewLabel_1;
+
+
 	public VentanaPrincipal() {
 		setTitle("Ventana Principal para establecer conexion");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,119 +53,138 @@ public class VentanaPrincipal extends JFrame implements IVista, KeyListener, Mou
 		this.contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(this.contentPane);
-		
+
 		lblNewLabel = new JLabel("CHAT APP");
 		lblNewLabel.setForeground(new Color(255, 0, 0));
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblNewLabel, BorderLayout.NORTH);
-		
+
 		panel = new JPanel();
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(new BorderLayout(0, 0));
-		
+
 		panel_1 = new JPanel();
 		panel.add(panel_1, BorderLayout.NORTH);
-		panel_1.setLayout(new GridLayout(3, 2, 0, 0));
-		
-		lblNewLabel_1 = new JLabel("Nombre de Usuario");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_1.add(lblNewLabel_1);
-		
-		textFieldNombre = new JTextField();
-		panel_1.add(textFieldNombre);
-		textFieldNombre.setColumns(10);
-		textFieldNombre.addKeyListener(this);
-		
+		panel_1.setLayout(new GridLayout(2, 2, 0, 0));
+
 		lblNewLabel_2 = new JLabel("Escucha Habilitada");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_1.add(lblNewLabel_2);
-		
+
 		rdbtnNewRadioButton = new JRadioButton("");
 		rdbtnNewRadioButton.addMouseListener(this);
 		panel_1.add(rdbtnNewRadioButton);
-		
+
+		lblNewLabel_1 = new JLabel();
+		panel_1.add(lblNewLabel_1);
+
 		panel_2 = new JPanel();
 		panel.add(panel_2, BorderLayout.CENTER);
 		panel_2.setLayout(new GridLayout(0, 2, 0, 0));
-		
+
 		panel_3 = new JPanel();
 		panel_2.add(panel_3);
 		panel_3.setLayout(new BorderLayout(0, 0));
-		
+
 		lblNewLabel_3 = new JLabel("Solicitudes Entrantes");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_3.add(lblNewLabel_3, BorderLayout.NORTH);
-		
+
 		list = new JList();
 		panel_3.add(list, BorderLayout.CENTER);
 		list.addMouseListener(this);
-		
+
 		btnIniciarChat = new JButton("Iniciar Chat");
 		btnIniciarChat.setEnabled(false);
 		panel_3.add(btnIniciarChat, BorderLayout.SOUTH);
-		
+
 		panel_4 = new JPanel();
 		panel_2.add(panel_4);
-		
+
 		lblNewLabel_4 = new JLabel("Direccion IPv6");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 11));
-		
+
 		btnSolicitarChat = new JButton("SOLICITAR CHAT");
 		btnSolicitarChat.setEnabled(false);
-		
+
 		textFieldIP = new JTextField();
 		textFieldIP.setColumns(10);
 		textFieldIP.addKeyListener(this);
-		
+		setPlaceholderText(textFieldIP, "Ingrese dirección IP...");
+
 		textFieldPuerto = new JTextField();
 		textFieldPuerto.setColumns(10);
 		textFieldPuerto.addKeyListener(this);
-		
+		setPlaceholderText(textFieldPuerto, "Ingrese puerto IP...");
+
 		JLabel lblNewLabel_5 = new JLabel("Puerto IP");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 11));
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
 		gl_panel_4.setHorizontalGroup(
-			gl_panel_4.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_4.createSequentialGroup()
-					.addGap(63)
-					.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnSolicitarChat)
-						.addComponent(textFieldIP, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_4)
-						.addComponent(textFieldPuerto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_5))
-					.addContainerGap(72, Short.MAX_VALUE))
+				gl_panel_4.createParallelGroup(GroupLayout.Alignment.LEADING)
+						.addGroup(gl_panel_4.createSequentialGroup()
+								.addGap(63)
+								.addGroup(gl_panel_4.createParallelGroup(GroupLayout.Alignment.LEADING)
+										.addComponent(btnSolicitarChat)
+										.addComponent(textFieldIP, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblNewLabel_4)
+										.addComponent(textFieldPuerto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblNewLabel_5))
+								.addContainerGap(72, Short.MAX_VALUE))
 		);
 		gl_panel_4.setVerticalGroup(
-			gl_panel_4.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_4.createSequentialGroup()
-					.addGap(48)
-					.addComponent(lblNewLabel_4)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(textFieldIP, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(30)
-					.addComponent(lblNewLabel_5)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(textFieldPuerto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-					.addComponent(btnSolicitarChat)
-					.addGap(32))
+				gl_panel_4.createParallelGroup(GroupLayout.Alignment.LEADING)
+						.addGroup(gl_panel_4.createSequentialGroup()
+								.addGap(48)
+								.addComponent(lblNewLabel_4)
+								.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+								.addComponent(textFieldIP, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addGap(30)
+								.addComponent(lblNewLabel_5)
+								.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+								.addComponent(textFieldPuerto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+								.addComponent(btnSolicitarChat)
+								.addGap(32))
 		);
 		panel_4.setLayout(gl_panel_4);
-	;
+		;
 		this.setVisible(true);
 		this.list.setModel(this.modeloUsuario);
 	}
-	
-	@Override
+
+	private void setPlaceholderText(JTextField textField, String placeholder) {
+		textField.setForeground(Color.GRAY);
+		textField.setText(placeholder);
+		textField.addFocusListener(new java.awt.event.FocusAdapter() {
+			public void focusGained(java.awt.event.FocusEvent evt) {
+				if (textField.getText().equals(placeholder)) {
+					textField.setText("");
+					textField.setForeground(Color.BLACK);
+				}
+			}
+
+			public void focusLost(java.awt.event.FocusEvent evt) {
+				if (textField.getText().isEmpty()) {
+					textField.setForeground(Color.GRAY);
+					textField.setText(placeholder);
+				}
+			}
+		});
+	}
+
+	public static void main(String[] args) {
+		// Crear una instancia de la ventana y ejecutarla
+		VentanaPrincipal ventana = new VentanaPrincipal();
+	}
+
 	public void setActionListener(ActionListener actionListener) {
 		this.btnSolicitarChat.addActionListener(actionListener);
 		this.rdbtnNewRadioButton.addActionListener(actionListener);
-		this.textFieldNombre.addActionListener(actionListener);
+		//this.textFieldNombre.addActionListener(actionListener);
 		this.btnIniciarChat.addActionListener(actionListener);
 
 		this.actionListener = actionListener;
@@ -199,7 +217,7 @@ public class VentanaPrincipal extends JFrame implements IVista, KeyListener, Mou
 
 	}
 
-   	@Override
+
 	public String getDireccionIP()
 	{
 		return this.textFieldIP.getText();
@@ -214,29 +232,30 @@ public class VentanaPrincipal extends JFrame implements IVista, KeyListener, Mou
 		return null;
 	}
 
-	@Override
+
 	public void agregarMensaje(String mensaje) {
 	}
 
-	@Override
+
 	public void agregarUsuario(String usuario) {
 		this.modeloUsuario.addElement(usuario);
 		this.validate(); // Para que se actualice el JList
 	}
 
-	@Override
+
 	public void deseleccionar() {
 		this.list.clearSelection();
 		this.modeloUsuario.removeAllElements();
 		this.btnIniciarChat.setEnabled(false);
 		this.rdbtnNewRadioButton.setSelected(false);
-		this.textFieldNombre.setEnabled(true);
+		//this.textFieldNombre.setEnabled(true);
 		this.textFieldIP.setEnabled(true);
 		this.textFieldPuerto.setEnabled(true);
 	}
 
 	public String getUsername() {
-		return this.textFieldNombre.getText();
+		//return this.textFieldNombre.getText();
+		return "s";
 	}
 
 	@Override
@@ -259,11 +278,11 @@ public class VentanaPrincipal extends JFrame implements IVista, KeyListener, Mou
 			if (this.rdbtnNewRadioButton.isSelected()) {
 				this.textFieldIP.setText("");
 				this.textFieldPuerto.setText("");
-				this.textFieldNombre.setEnabled(false);
+				//this.textFieldNombre.setEnabled(false);
 				this.textFieldIP.setEnabled(false);
 				this.textFieldPuerto.setEnabled(false);
 			} else {
-				this.textFieldNombre.setEnabled(true);
+				//this.textFieldNombre.setEnabled(true);
 				this.textFieldIP.setEnabled(true);
 				this.textFieldPuerto.setEnabled(true);
 			}
@@ -281,7 +300,7 @@ public class VentanaPrincipal extends JFrame implements IVista, KeyListener, Mou
 	}
 
 	public void setTextFieldNombre(String textFieldNombre) {
-		this.textFieldNombre.setText(textFieldNombre);
+		//this.textFieldNombre.setText(textFieldNombre);
 	}
 
 	public void minimizarVentana() {
