@@ -1,9 +1,8 @@
-package Pruebas;
+package client.Pruebas;
 
-import controller.ControladorPrincipal;
-import model.Usuario;
+import client.controller.ControladorPrincipal;
+import client.model.Usuario;
 
-import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public class Prueba2 {

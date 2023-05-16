@@ -1,7 +1,7 @@
-package controller;
+package client.controller;
 
-import model.Usuario;
-import view.*;
+import client.model.Usuario;
+import client.view.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

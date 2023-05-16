@@ -13,10 +13,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0e1c2e3-4c14-42d3-aa18-5f272a77448b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Chat_P2P_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControladorChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ControladorChat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/Servidor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Chat_P2P_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Chat_P2P_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chat_P2P.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Manual Instalación, Configuración y Operación.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Pruebas/Prueba1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Pruebas/Prueba1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Pruebas/Prueba2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Pruebas/Prueba2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControladorChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/ControladorChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControladorPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/ControladorPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/EnvioMensajes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/model/EnvioMensajes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/GestorConexion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/model/GestorConexion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/GestorMensajes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/model/GestorMensajes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/GestorSesiones.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/model/GestorSesiones.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Informacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/model/Informacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Mensaje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/model/Mensaje.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Sesion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/model/Sesion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/model/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/IVista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/IVista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/VentanaChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/VentanaChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/VentanaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/VentanaPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +45,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -56,7 +74,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/Lapiana/Downloads/DemoSocket",
+    "last_opened_file_path": "D:/Santi/Facultad/Análisis y Diseño de Sistemas II/TPs/Chat_Server",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",

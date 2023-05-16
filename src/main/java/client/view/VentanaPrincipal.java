@@ -1,4 +1,4 @@
-package view;
+package client.view;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -13,10 +13,6 @@ import java.awt.event.MouseListener;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 //import com.jgoodies.forms.layout.FormLayout;
 //import com.jgoodies.forms.layout.ColumnSpec;
 //import com.jgoodies.forms.layout.RowSpec;

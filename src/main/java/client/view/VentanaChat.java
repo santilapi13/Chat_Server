@@ -1,10 +1,9 @@
-package view;
+package client.view;
 
-import model.Usuario;
+import client.model.Usuario;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.io.IOException;
 import java.net.UnknownHostException;
 
 import javax.swing.*;

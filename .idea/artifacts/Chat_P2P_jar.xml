@@ -2,7 +2,7 @@
   <artifact type="jar" name="Chat_P2P:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/Chat_P2P_jar</output-path>
     <root id="archive" name="Chat_P2P.jar">
-      <element id="module-output" name="Chat_P2P" />
+      <element id="module-output" name="Chat_Server" />
     </root>
   </artifact>
 </component>

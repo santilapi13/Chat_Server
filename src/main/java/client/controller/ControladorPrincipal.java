@@ -1,17 +1,15 @@
-package controller;
+package client.controller;
 
-import model.Informacion;
-import view.IVista;
-import view.VentanaPrincipal;
+import client.model.Informacion;
+import client.view.IVista;
+import client.view.VentanaPrincipal;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.UnknownHostException;
-import java.util.Observable;
-import controller.ControladorChat;
 
-import model.Usuario;
+import client.model.Usuario;
 
 import javax.swing.*;
 

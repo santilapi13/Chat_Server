@@ -1,7 +1,7 @@
-package model;
+package client.model;
 
-import controller.ControladorChat;
-import controller.ControladorPrincipal;
+import client.controller.ControladorChat;
+import client.controller.ControladorPrincipal;
 
 import java.io.*;
 import java.net.InetAddress;

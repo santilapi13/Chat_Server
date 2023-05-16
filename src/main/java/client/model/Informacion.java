@@ -1,4 +1,4 @@
-package model;
+package client.model;
 
 public class Informacion {
     private String IP;
