@@ -104,11 +104,6 @@ public class VentanaRegistro extends JFrame implements IVista, KeyListener, Mous
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-        // Crear una instancia de la ventana y ejecutarla
-        VentanaRegistro ventana = new VentanaRegistro();
-    }
-
     @Override
     public void setActionListener(ActionListener actionListener) {
 

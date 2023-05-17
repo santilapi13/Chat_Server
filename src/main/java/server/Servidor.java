@@ -1,7 +1,6 @@
 package server;
 
 import client.model.CredencialesUsuario;
-import server.exceptions.UsernameRepetidoException;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -10,50 +9,58 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Servidor implements Runnable {
+public class Servidor {
     private HashMap<String, SocketUsuario> usuarios = new HashMap<String, SocketUsuario>();
     private ServerSocket socketServer;
+    private static Servidor instance;
 
-    public Servidor() throws IOException {
+    public static Servidor getInstance() throws IOException {
+        if (instance == null)
+            instance = new Servidor();
+        return instance;
+    }
+
+    private Servidor() throws IOException {
         this.socketServer = new ServerSocket(2345);
     }
 
-    public void registrarUsuario(Socket socket) throws IOException, UsernameRepetidoException {
+    public void registrarUsuario(Socket socket) throws IOException {
         SocketUsuario socketUsuario = new SocketUsuario(socket);
-        if (!this.usuarios.containsKey(socketUsuario.getUsername()))
+        if (!this.usuarios.containsKey(socketUsuario.getUsername())) {
+            System.out.println("Usuario registrado: " + socketUsuario.getUsername());
+            socketUsuario.getSalida().println("200");
             this.usuarios.put(socketUsuario.getUsername(), socketUsuario);
-        else
-            throw new UsernameRepetidoException();
+        } else
+            socketUsuario.getSalida().println("409");
     }
 
-    @Override
-    public void run() {
-        try {
-            while (true)
-                this.escucharNuevosUsuarios();
-        } catch (IOException e1) {
-        } catch (UsernameRepetidoException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-    }
-
-    public void escucharNuevosUsuarios() throws IOException, UsernameRepetidoException {
+    public void escucharNuevosUsuarios() throws IOException {
         Socket socket = socketServer.accept();
+        System.out.println("Usuario con IP " + socket.getInetAddress() + " intenta registrarse");
         this.registrarUsuario(socket);
     }
 
-    public void escucharSolicitudes() throws IOException {
-        this.usuarios.forEach((k, v) -> {
+    public void escucharSolicitudes() {
+        //System.out.println("Escuchando solicitudes..");
+        for (Map.Entry<String, SocketUsuario> entry : this.usuarios.entrySet()) {
             try {
-                // Itera sobre todos los usuarios que no tienen interlocutor para ver si alguno realizo una solicitud.
+                System.out.println("LLEGA AL TRY");
+                SocketUsuario usuarioActual = entry.getValue();
+                //System.out.println("Escuchando solicitudes de " + usuarioActual.getUsername());
                 // TODO: checkear que este en modo escucha el interlocutor.
-                if (v.getInterlocutor() == null) {
-                    String mensaje = v.getEntrada().readLine();
-                    v.setInterlocutor(procesarSolicitud(mensaje, v.getUsername()));
+                if (usuarioActual.getInterlocutor() == null) {
+                    System.out.println("LLEGA ANTES DEL READLINE");
+                    String mensaje = usuarioActual.getEntrada().readLine();
+                    System.out.println("LLEGA DESPUES DEL READLINE");
+                    if (Integer.parseInt(mensaje) == 503) { // Si el usuario se desconecto, lo elimina de la lista.
+                        System.out.println("Usuario " + usuarioActual.getUsername() + " se desconecto.");
+                        this.usuarios.remove(usuarioActual.getUsername());
+                    } else
+                        usuarioActual.setInterlocutor(procesarSolicitud(mensaje, usuarioActual.getUsername()));
                 }
             } catch (IOException e) {
             }
-        });
+        }
     }
 
     private String procesarSolicitud(String mensaje, String username) {

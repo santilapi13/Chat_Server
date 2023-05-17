@@ -186,11 +186,6 @@ public class VentanaPrincipal extends JFrame implements IVista, KeyListener, Mou
 		});
 	}
 
-	public static void main(String[] args) {
-		// Crear una instancia de la ventana y ejecutarla
-		VentanaPrincipal ventana = new VentanaPrincipal();
-	}
-
 	public void setActionListener(ActionListener actionListener) {
 		this.btnSolicitarChat.addActionListener(actionListener);
 		this.rdbtnNewRadioButton.addActionListener(actionListener);

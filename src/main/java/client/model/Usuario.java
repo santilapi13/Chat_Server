@@ -3,6 +3,7 @@ package client.model;
 import client.controller.ControladorChat;
 import client.controller.ControladorPrincipal;
 
+import javax.swing.*;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -79,8 +80,17 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
         return escuchando;
     }
 
-    public void registrarseEnServidor(String IP, int puerto) throws IOException {
+    public BufferedReader getEntrada() {
+        return entrada;
+    }
+
+    public PrintWriter getSalida() {
+        return salida;
+    }
+
+    public void registrarseEnServidor(String IP, int puerto, String usuario) throws IOException {
         this.socket = new Socket(IP, puerto);
+        this.credencialesUsuario.setUsername(usuario);
         iniciarESSockets();
     }
 

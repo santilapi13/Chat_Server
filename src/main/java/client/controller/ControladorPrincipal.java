@@ -2,10 +2,13 @@ package client.controller;
 
 import client.model.CredencialesUsuario;
 import client.view.IVista;
+import client.view.VentanaChat;
 import client.view.VentanaPrincipal;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.net.UnknownHostException;
 
@@ -18,10 +21,23 @@ public class ControladorPrincipal implements ActionListener {
     private IVista vista;
     private static ControladorPrincipal instance;
     
-    private ControladorPrincipal() throws UnknownHostException {
+    private ControladorPrincipal() {
         this.vista = new VentanaPrincipal();
         this.vista.setActionListener(this);
-        ((VentanaPrincipal) this.vista).setTextFieldNombre(Usuario.getInstance().getUsername());
+        ((VentanaPrincipal) this.vista).setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        ((VentanaPrincipal) this.vista).addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                try {
+                    Usuario.getInstance().getSalida().println("503");
+                    Usuario.getInstance().desconectar();
+                    java.awt.Toolkit.getDefaultToolkit().beep();
+                    System.exit(0);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
     }
     
     public static ControladorPrincipal getInstance() throws UnknownHostException {

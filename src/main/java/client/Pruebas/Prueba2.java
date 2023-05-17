@@ -1,6 +1,7 @@
 package client.Pruebas;
 
 import client.controller.ControladorPrincipal;
+import client.controller.ControladorRegistro;
 import client.model.Usuario;
 
 import java.net.UnknownHostException;
@@ -11,7 +12,7 @@ public class Prueba2 {
         Usuario.getInstance().setPuerto(puerto);
         System.out.println("Mi puerto es: " + Usuario.getInstance().getPuerto());
 
-        ControladorPrincipal.getInstance();
+        ControladorRegistro.getInstance();
 
     }
 
