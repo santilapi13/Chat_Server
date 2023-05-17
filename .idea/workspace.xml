@@ -15,6 +15,7 @@
     <list default="true" id="c0e1c2e3-4c14-42d3-aa18-5f272a77448b" name="Changes" comment="Primer Commit. Separacion en paquetes: client y server">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/view/VentanaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/VentanaPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/VentanaRegistro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/VentanaRegistro.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,6 +105,8 @@
       <updated>1682626763241</updated>
       <workItem from="1684270001706" duration="1799000" />
       <workItem from="1684272691616" duration="418000" />
+      <workItem from="1684274373136" duration="3409000" />
+      <workItem from="1684347399926" duration="33000" />
     </task>
     <task id="LOCAL-00001" summary="Primer commit. Clases basicas del modelo. Falta terminar de implementar tema sockets.">
       <created>1682633226826</created>

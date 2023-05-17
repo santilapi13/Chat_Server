@@ -44,6 +44,8 @@ public class VentanaPrincipal extends JFrame implements IVista, KeyListener, Mou
 	private DefaultListModel<String> modeloUsuario = new DefaultListModel<String>();
 	private JLabel lblNewLabel_1;
 
+	private JLabel lblNewLabel_6;
+
 
 	public VentanaPrincipal() {
 		setTitle("Ventana Principal para establecer conexion");
@@ -122,31 +124,38 @@ public class VentanaPrincipal extends JFrame implements IVista, KeyListener, Mou
 
 		JLabel lblNewLabel_5 = new JLabel("Puerto IP");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 11));
+
+		lblNewLabel_6 = new JLabel("Solicitar Chat");
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 14));
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
 		gl_panel_4.setHorizontalGroup(
-				gl_panel_4.createParallelGroup(GroupLayout.Alignment.LEADING)
+				gl_panel_4.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_4.createSequentialGroup()
 								.addGap(63)
-								.addGroup(gl_panel_4.createParallelGroup(GroupLayout.Alignment.LEADING)
+								.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
 										.addComponent(btnSolicitarChat)
 										.addComponent(textFieldIP, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 										.addComponent(lblNewLabel_4)
 										.addComponent(textFieldPuerto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblNewLabel_5))
-								.addContainerGap(72, Short.MAX_VALUE))
+										.addComponent(lblNewLabel_5)
+										.addGroup(gl_panel_4.createSequentialGroup()
+												.addPreferredGap(ComponentPlacement.RELATED)
+												.addComponent(lblNewLabel_6, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)))
+								.addContainerGap(44, Short.MAX_VALUE))
 		);
 		gl_panel_4.setVerticalGroup(
-				gl_panel_4.createParallelGroup(GroupLayout.Alignment.LEADING)
+				gl_panel_4.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_4.createSequentialGroup()
-								.addGap(48)
+								.addComponent(lblNewLabel_6)
+								.addGap(34)
 								.addComponent(lblNewLabel_4)
-								.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
 								.addComponent(textFieldIP, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addGap(30)
 								.addComponent(lblNewLabel_5)
-								.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+								.addPreferredGap(ComponentPlacement.RELATED)
 								.addComponent(textFieldPuerto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+								.addPreferredGap(ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
 								.addComponent(btnSolicitarChat)
 								.addGap(32))
 		);
@@ -155,6 +164,7 @@ public class VentanaPrincipal extends JFrame implements IVista, KeyListener, Mou
 		this.setVisible(true);
 		this.list.setModel(this.modeloUsuario);
 	}
+
 
 	private void setPlaceholderText(JTextField textField, String placeholder) {
 		textField.setForeground(Color.GRAY);

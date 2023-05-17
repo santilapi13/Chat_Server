@@ -1,9 +1,6 @@
 package client.view;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.plaf.basic.BasicTextFieldUI;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -16,6 +13,9 @@ public class VentanaRegistro extends JFrame implements IVista, KeyListener, Mous
     private JTextField campoUsuario;
     private JTextField campoDireccionIP;
     private JTextField campoPuertoIP;
+    private JButton btnRegistrarse;
+
+    private ActionListener actionListener;
 
     public VentanaRegistro() {
         // Configurar la ventana
@@ -25,7 +25,7 @@ public class VentanaRegistro extends JFrame implements IVista, KeyListener, Mous
         getContentPane().setLayout(new GridLayout(1, 1)); // Utilizar GridLayout para reorganizar los componentes
 
         // Crear panel para agrupar los campos de texto y los labels
-        JPanel panel = new JPanel(new GridLayout(7, 2));
+        JPanel panel = new JPanel(new GridLayout(8, 2));
 
         // Crear labels
         JLabel labelUsuario = new JLabel("   Nombre de Usuario:");
@@ -34,6 +34,9 @@ public class VentanaRegistro extends JFrame implements IVista, KeyListener, Mous
         labelDireccionIP.setFont(new Font("Tahoma", Font.BOLD, 11));
         JLabel labelPuertoIP = new JLabel("   Puerto IP de Servidor:");
         labelPuertoIP.setFont(new Font("Tahoma", Font.BOLD, 11));
+
+
+
 
         // Crear campo de texto para Nombre de Usuario
         campoUsuario = new JTextField() {
@@ -85,6 +88,18 @@ public class VentanaRegistro extends JFrame implements IVista, KeyListener, Mous
         // Agregar el panel a la ventana
         getContentPane().add(panel);
 
+        JLabel lblNewLabel = new JLabel("");
+        panel.add(lblNewLabel);
+
+        btnRegistrarse = new JButton("REGISTRARSE");
+        btnRegistrarse.setFont(new Font("Tahoma", Font.BOLD, 14));
+        panel.add(btnRegistrarse);
+        this.btnRegistrarse.setEnabled(false);
+
+        this.campoUsuario.addKeyListener(this);
+        this.campoDireccionIP.addKeyListener(this);
+        this.campoPuertoIP.addKeyListener(this);
+
         // Hacer visible la ventana
         setVisible(true);
     }
@@ -93,6 +108,14 @@ public class VentanaRegistro extends JFrame implements IVista, KeyListener, Mous
         // Crear una instancia de la ventana y ejecutarla
         VentanaRegistro ventana = new VentanaRegistro();
     }
+
+    @Override
+    public void setActionListener(ActionListener actionListener) {
+
+        this.btnRegistrarse.addActionListener(actionListener);
+        this.actionListener = actionListener;
+    }
+
 
     @Override
     public void minimizarVentana() {
@@ -104,10 +127,7 @@ public class VentanaRegistro extends JFrame implements IVista, KeyListener, Mous
 
     }
 
-    @Override
-    public void setActionListener(ActionListener actionListener) {
 
-    }
 
     @Override
     public void cerrarse() {
@@ -116,17 +136,21 @@ public class VentanaRegistro extends JFrame implements IVista, KeyListener, Mous
 
     @Override
     public String getDireccionIP() {
-        return null;
+
+        return this.campoDireccionIP.getText();
     }
 
     @Override
     public String getPuertoIP() {
-        return null;
+
+        return this.campoPuertoIP.getText();
+
     }
 
     @Override
     public String getText() {
-        return null;
+
+            return this.campoUsuario.getText();
     }
 
     @Override
@@ -156,7 +180,7 @@ public class VentanaRegistro extends JFrame implements IVista, KeyListener, Mous
 
     @Override
     public void keyReleased(KeyEvent e) {
-
+        this.btnRegistrarse.setEnabled(!campoUsuario.getText().isEmpty() && !campoDireccionIP.getText().isEmpty() && !campoPuertoIP.getText().isEmpty());
     }
 
     @Override
