@@ -39,17 +39,9 @@ public class ControladorRegistro  implements ActionListener  {
                 int puerto = Integer.parseInt(vista.getPuertoIP());
                 String usuario = vista.getText();
 
-                //TODO
                 Usuario.getInstance().registrarseEnServidor(ip, puerto, usuario);
 
-                int msg = -1;
-                while (msg == -1) {
-                    try {
-                        msg = Integer.parseInt(Usuario.getInstance().getEntrada().readLine());
-                    } catch (IOException ex) {
-                    }
-                }
-
+                int msg = Integer.parseInt(Usuario.getInstance().getEntrada().readLine());
 
                 if (msg == 409)
                     JOptionPane.showMessageDialog(null, "Username ya registrado. Elija uno nuevo.");

@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @author : Grupo 4 - Avalos, Lapiana y Sosa
  */
 
-public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorConexion {
+public class Usuario implements GestorSesiones, EnvioMensajes, GestorConexion {
     private CredencialesUsuario credencialesUsuario;
     private Socket socket;
     private ServerSocket socketServer;
@@ -95,17 +95,6 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
     }
 
     /**
-     * Se pone, concurrentemente, en modo escucha esperando una solicitud de chat.
-     */
-    @Override
-    public void run() {
-        try {
-            this.activarModoEscucha();
-        } catch (IOException e) {
-        }
-    }
-
-    /**
      * Inicia los streams de entrada y salida del socket. Envia el username al receptor y recibe el username del usuario remoto.
      * Instancia una nueva sesion, asignandola al atributo sesionActual, con la IP, puerto y username del usuario remoto.
      * En caso de que sea el solicitante de la sesion de chat, invoca la creacion de la ventana de chat.<br>
@@ -150,17 +139,10 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
         System.out.println("Modo escucha desactivado.");
     }
 
-    /**
-     * Solicita un chat al usuario remoto. Crea un nuevo socket con el usuario remoto, en caso de que su IP y puerto sean validos.<br>
-     * <b>Pre:</b> Los parametros IP y puerto deben ser validos.<br>
-     * <b>Post:</b> Se ha creado un nuevo socket con el usuario remoto.
-     * @param credencialesUsuarioReceptor: La informacion del usuario remoto.
-     * @throws IOException: Si hay un error al crear el socket.
-     */
     public void solicitarChat(CredencialesUsuario credencialesUsuarioReceptor) throws IOException {
-        // TODO: enviar solicitud al servidor (y cambiar javadoc)
+        this.salida.println(credencialesUsuarioReceptor.getIP() + " " + credencialesUsuarioReceptor.getPuerto());
         this.solicitando = true;
-        this.iniciarSesionChat();
+        //this.iniciarSesionChat();
     }
 
     private void iniciarSesionChat() throws IOException {
@@ -169,8 +151,7 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
 
         if (this.solicitando) {
             ControladorChat.getInstance().nuevaVentana();
-        }
-        else{
+        } else {
             ControladorPrincipal.getInstance().agregarUsuario(usernameRemoto);
         }
     }

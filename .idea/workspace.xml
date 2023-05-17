@@ -13,19 +13,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0e1c2e3-4c14-42d3-aa18-5f272a77448b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/ControladorNuevos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/ControladorSolicitudes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/Pruebas/Prueba1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Pruebas/Prueba1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/Pruebas/Prueba2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Pruebas/Prueba2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/ControladorPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/ControladorPrincipal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/ControladorRegistro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/ControladorRegistro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/model/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/VentanaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/VentanaPrincipal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/VentanaRegistro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/VentanaRegistro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/ControladorSolicitudes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/Servidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Servidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/exceptions/UsernameRepetidoException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/SocketUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/SocketUsuario.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +74,7 @@
       <recent name="D:\Santi\Facultad\Análisis y Diseño de Sistemas II\TPs\Chat_P2P\src\main\java\view" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Prueba1">
+  <component name="RunManager" selected="Application.Prueba2">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="server.Main" />
       <module name="Chat_Server" />
@@ -145,9 +142,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Prueba2" />
         <item itemvalue="Application.Prueba1" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Prueba2" />
         <item itemvalue="Application.VentanaRegistro" />
         <item itemvalue="Application.VentanaPrincipal" />
       </list>
@@ -225,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684258938325</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Anda el registro de usuarios. Corregir deslogeo al cerrar Ventana Principal.">
+      <created>1684357001589</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1684357001589</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -238,7 +242,8 @@
     <MESSAGE value="Documentacion clase Usuario." />
     <MESSAGE value="Atributo solicitando int -&gt; boolean." />
     <MESSAGE value="Primer Commit. Separacion en paquetes: client y server" />
-    <option name="LAST_COMMIT_MESSAGE" value="Primer Commit. Separacion en paquetes: client y server" />
+    <MESSAGE value="Anda el registro de usuarios. Corregir deslogeo al cerrar Ventana Principal." />
+    <option name="LAST_COMMIT_MESSAGE" value="Anda el registro de usuarios. Corregir deslogeo al cerrar Ventana Principal." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

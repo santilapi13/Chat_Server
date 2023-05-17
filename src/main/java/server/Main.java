@@ -8,7 +8,6 @@ public class Main {
 
             Servidor.getInstance();
             ControladorNuevos.getInstance().start();
-            ControladorSolicitudes.getInstance().start();
 
         } catch (IOException e) {
             throw new RuntimeException(e);

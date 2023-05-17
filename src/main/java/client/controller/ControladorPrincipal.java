@@ -30,7 +30,7 @@ public class ControladorPrincipal implements ActionListener {
             public void windowClosing(WindowEvent e) {
                 try {
                     Usuario.getInstance().getSalida().println("503");
-                    Usuario.getInstance().desconectar();
+                    System.out.println("Cerrando ventana principal");
                     java.awt.Toolkit.getDefaultToolkit().beep();
                     System.exit(0);
                 } catch (IOException ex) {
@@ -58,30 +58,34 @@ public class ControladorPrincipal implements ActionListener {
             if (comando.equalsIgnoreCase("")) {
                 if (!Usuario.getInstance().isEscuchando()) {
                     Usuario.getInstance().setUsername(((VentanaPrincipal) vista).getUsername());
-                    Thread hilo = new Thread(Usuario.getInstance());
-                    hilo.start();
                 } else {
                     Usuario.getInstance().desactivarModoEscucha();
                 }
             }
             if (comando.equalsIgnoreCase("SOLICITAR CHAT")) {
+
                 String ip = vista.getDireccionIP();
                 String puerto = vista.getPuertoIP();
-                Usuario.getInstance().setUsername(((VentanaPrincipal) vista).getUsername());
-                int puertoInt = Integer.parseInt(puerto);
-                CredencialesUsuario credencialesUsuarioReceptor = new CredencialesUsuario(ip, puertoInt, "");
+                CredencialesUsuario credencialesUsuarioReceptor = new CredencialesUsuario(ip, Integer.parseInt(puerto), "");
                 Usuario.getInstance().solicitarChat(credencialesUsuarioReceptor);
+
+                String respuesta = Usuario.getInstance().getEntrada().readLine();
+                if (respuesta.equalsIgnoreCase("200")) {
+
+                    // TODO: Abrir ventana de chat esperando al otro.
+
+                } else if (respuesta.equalsIgnoreCase("404")) {
+                    java.awt.Toolkit.getDefaultToolkit().beep();
+                    JOptionPane.showMessageDialog(null, "ERROR: Compruebe IP y puertos.");
+                }
+
             }
             if (comando.equalsIgnoreCase("INICIAR CHAT")) {
                 ControladorChat.getInstance().nuevaVentana();
                 this.vista.deseleccionar();
             }
         } catch (UnknownHostException ex1) {
-            java.awt.Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "ERROR: Compruebe IP ingresada.");
         } catch (IOException ex2) {
-            java.awt.Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "ERROR: Compruebe Puerto e IP ingresados.");
         }
 
     }
