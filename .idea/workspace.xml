@@ -14,13 +14,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c0e1c2e3-4c14-42d3-aa18-5f272a77448b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Pruebas/Prueba1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Pruebas/Prueba1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Pruebas/Prueba2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Pruebas/Prueba2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/ControladorPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/ControladorPrincipal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/ControladorRegistro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/ControladorRegistro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/model/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/ControladorSolicitudes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/Servidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Servidor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/SocketUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/SocketUsuario.java" afterDir="false" />
     </list>
@@ -229,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684357001589</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Anda deslogeo de ventana principal. Arreglar solicitudes de chats.">
+      <created>1684363664914</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1684363664915</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -243,7 +244,8 @@
     <MESSAGE value="Atributo solicitando int -&gt; boolean." />
     <MESSAGE value="Primer Commit. Separacion en paquetes: client y server" />
     <MESSAGE value="Anda el registro de usuarios. Corregir deslogeo al cerrar Ventana Principal." />
-    <option name="LAST_COMMIT_MESSAGE" value="Anda el registro de usuarios. Corregir deslogeo al cerrar Ventana Principal." />
+    <MESSAGE value="Anda deslogeo de ventana principal. Arreglar solicitudes de chats." />
+    <option name="LAST_COMMIT_MESSAGE" value="Anda deslogeo de ventana principal. Arreglar solicitudes de chats." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

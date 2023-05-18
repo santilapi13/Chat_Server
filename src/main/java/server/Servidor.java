@@ -58,10 +58,9 @@ public class Servidor {
         for (Map.Entry<String, SocketUsuario> entry : this.usuarios.entrySet()) {
             SocketUsuario v = entry.getValue();
             // Si el IP y puerto ingresados coinciden con alguno, los vincula (setea el interlocutor).
-            // TODO: ARREGLAR ESTO DE QUE NO ANDA LA COMPARACION ENTRE IPs
-            if (v.getSocket().getInetAddress().toString().equals(IP) && v.getSocket().getPort() == puerto) {
+            if (v.isEscuchando() && v.getSocket().getInetAddress().getHostAddress().equals(IP) && v.getSocket().getPort() == puerto) {
                 v.setInterlocutor(username);
-                usernameInterlocutor =  v.getUsername();
+                usernameInterlocutor = v.getUsername();
                 System.out.println("Usuario " + username + " se conecto con " + v.getUsername());
             }
         }

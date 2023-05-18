@@ -18,7 +18,6 @@ import java.util.ArrayList;
 public class Usuario implements GestorSesiones, EnvioMensajes, GestorConexion {
     private CredencialesUsuario credencialesUsuario;
     private Socket socket;
-    private ServerSocket socketServer;
     private InputStreamReader entradaSocket;
     private PrintWriter salida;
     private BufferedReader entrada;
@@ -89,7 +88,7 @@ public class Usuario implements GestorSesiones, EnvioMensajes, GestorConexion {
     }
 
     public void registrarseEnServidor(String IP, int puerto, String usuario) throws IOException {
-        this.socket = new Socket(IP, puerto);
+        this.socket = new Socket(IP, puerto, null, this.credencialesUsuario.getPuerto());
         this.credencialesUsuario.setUsername(usuario);
         iniciarESSockets();
     }
@@ -110,37 +109,23 @@ public class Usuario implements GestorSesiones, EnvioMensajes, GestorConexion {
         this.salida.println(this.credencialesUsuario.getUsername());
     }
 
-    /**
-     * Activa el modo escucha del usuario. Se pone a la espera de una solicitud de chat. Cuando la recibe, crea un nuevo socket con el usuario remoto.<br>
-     * <b>Pre:</b> -<br>
-     * <b>Post:</b> Se ha creado un nuevo socket con el usuario remoto a partir del socketServer.
-     * @throws IOException: Si hay un error al crear el socket.
-     */
     private void activarModoEscucha() throws IOException {
-        System.out.println("Modo escucha activado.");
-        this.socketServer = new ServerSocket(this.getPuerto());
+        this.salida.println("300");
         escuchando = true;
-        this.socket = socketServer.accept();
-        this.socketServer.close();
-        escuchando = false;
-        this.socketServer = null;
-        this.iniciarESSockets();
+        System.out.println("Modo escucha activado.");
     }
 
-    /**
-     * Desactiva el modo escucha del usuario. Cierra el socketServer y el socket.<br>
-     * @throws IOException: Si hay un error al cerrar el socketServer.
-     */
     public void desactivarModoEscucha() throws IOException {
-        this.socketServer.close();
-        this.socketServer = null;
-        this.socket = null;
+        this.salida.println("301");
         escuchando = false;
         System.out.println("Modo escucha desactivado.");
     }
 
     public void solicitarChat(CredencialesUsuario credencialesUsuarioReceptor) throws IOException {
-        this.salida.println(credencialesUsuarioReceptor.getIP() + " " + credencialesUsuarioReceptor.getPuerto());
+        String IP = credencialesUsuarioReceptor.getIP();
+        if (IP.equals("localhost"))
+            IP = InetAddress.getLocalHost().getHostAddress();
+        this.salida.println(IP + " " + credencialesUsuarioReceptor.getPuerto());
         this.solicitando = true;
         //this.iniciarSesionChat();
     }
