@@ -3,6 +3,8 @@ package client.model;
 import client.controller.ControladorChat;
 import client.controller.ControladorPrincipal;
 
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 import javax.swing.*;
 import java.io.*;
 import java.net.InetAddress;
@@ -10,12 +12,13 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Base64;
 
 /**
  * @author : Grupo 4 - Avalos, Lapiana y Sosa
  */
 
-public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorConexion {
+public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorConexion, GestorSeguridad {
     private CredencialesUsuario credencialesUsuario;
     private Socket socket;
     private InputStreamReader entradaSocket;
@@ -157,12 +160,31 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
      * @throws IOException: Si hay un error al enviar el mensaje.
      */
     public void enviarMensaje(String mensaje) throws IOException {
+
+        String mensajeEncriptado;
+        try {
+            mensajeEncriptado = encriptar("12345678", mensaje, "DES");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return; // Manejo del error de encriptación
+        }
+
+        System.out.println(mensajeEncriptado);
         this.sesionChatActual.addMensaje(mensaje, true);
         this.salida.println("351");
         System.out.println("Codigo enviado (desde clase Usuario).");
-        this.salida.println(mensaje);
+        this.salida.println(mensajeEncriptado);
         System.out.println("Mensaje enviado (desde clase Usuario).");
     }
+
+    public String encriptar(String pass, String texto, String algoritmo) throws Exception {
+        java.security.Key key = new SecretKeySpec(pass.getBytes(), algoritmo);
+        Cipher cipher = Cipher.getInstance(algoritmo);
+        cipher.init(Cipher.ENCRYPT_MODE, key);
+        byte[] bytesEncriptados = cipher.doFinal(texto.getBytes());
+        return Base64.getEncoder().encodeToString(bytesEncriptados);
+    }
+
 
     /**
      * Recibe un mensaje del usuario remoto.<br>
@@ -170,10 +192,30 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
      * @throws IOException: Si hay un error al leer el mensaje.
      */
     public String recibirMensaje() throws IOException {
-        String mensaje = this.entrada.readLine();
-        this.sesionChatActual.addMensaje(mensaje, false);
-        return mensaje;
+        String mensajeEncriptado = this.entrada.readLine();
+        this.sesionChatActual.addMensaje(mensajeEncriptado, false);
+
+        // Desencriptar el mensaje
+        String mensajeDesencriptado;
+        try {
+            mensajeDesencriptado = desencriptar("12345678", mensajeEncriptado, "DES");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null; // Manejo del error de desencriptación
+        }
+
+        return mensajeDesencriptado;
     }
+
+    public String desencriptar(String pass, String textoEncriptado, String algoritmo) throws Exception {
+        java.security.Key key = new SecretKeySpec(pass.getBytes(), algoritmo);
+        Cipher cipher = Cipher.getInstance(algoritmo);
+        cipher.init(Cipher.DECRYPT_MODE, key);
+        byte[] bytesEncriptados = Base64.getDecoder().decode(textoEncriptado);
+        byte[] bytesDesencriptados = cipher.doFinal(bytesEncriptados);
+        return new String(bytesDesencriptados);
+    }
+
 
     public void desconectar() throws IOException {
         this.addNuevaSesion(this.sesionChatActual);
