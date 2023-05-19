@@ -15,12 +15,13 @@ public class SocketUsuario extends Thread {
     private PrintWriter salida;
     private BufferedReader entrada;
     private boolean escuchando;
+    private boolean enChat;
 
     @Override
     public void run() {
         while (true) {
             try {
-                if (this.interlocutor == null) {
+                if (!enChat) {
                     this.escucharSolicitudes();
                 } else
                     this.escucharMensajes();
@@ -36,6 +37,7 @@ public class SocketUsuario extends Thread {
         this.salida = new PrintWriter(socket.getOutputStream(), true);
         this.username = this.entrada.readLine();
         this.escuchando = false;
+        this.enChat = false;
     }
 
     public String getUsername() {
@@ -85,9 +87,16 @@ public class SocketUsuario extends Thread {
             System.out.println("Usuario " + this.username + " desactivo el modo escucha.");
             this.escuchando = false;
 
+        // Si el usuario inicia el chat con quien se lo solicito
+        } else if (this.interlocutor != null && mensaje.equals("350")) {
+            this.escuchando = false;
+            this.enChat = true;
+            System.out.println("Usuario " + this.username + " ingreso al chat con " + this.interlocutor + ".");
+
         } else {
             String usernameInterlocutor = Servidor.getInstance().procesarSolicitud(mensaje, this.username);
             if (usernameInterlocutor != null) {
+                this.enChat = true;
                 this.interlocutor = usernameInterlocutor;
                 this.salida.println("200");
                 System.out.println("Usuario " + username + " se conecto con " + this.interlocutor + ".");
@@ -98,7 +107,8 @@ public class SocketUsuario extends Thread {
     }
 
     private void escucharMensajes() {
-
+        // TODO: Gestionar envio y recepcion de mensajes a traves del servidor usando el HashMap (filtrando por username).
+        // TODO: Gestionar cierre de sesion de chat (ajustar enChat y otras cosas).
     }
 
 }

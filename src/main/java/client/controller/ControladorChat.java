@@ -39,7 +39,8 @@ public class ControladorChat implements ActionListener, Runnable  {
                 }
             }
         });
-        iniciarHiloRecibirMensajes();
+        recibirMensajesThread = new Thread(this);
+        recibirMensajesThread.start();
     }
 
     public static ControladorChat getInstance() throws UnknownHostException {
@@ -89,11 +90,6 @@ public class ControladorChat implements ActionListener, Runnable  {
             ((VentanaChat) vista).dispose();
         } catch (IOException e) {
         }
-    }
-
-    private void iniciarHiloRecibirMensajes() {
-        recibirMensajesThread = new Thread(this);
-        recibirMensajesThread.start();
     }
 
 }

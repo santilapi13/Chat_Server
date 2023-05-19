@@ -84,6 +84,7 @@ public class ControladorPrincipal implements ActionListener {
 
             }
             if (comando.equalsIgnoreCase("INICIAR CHAT")) {
+                Usuario.getInstance().getSalida().println("350");
                 ControladorChat.getInstance().nuevaVentana();
                 this.vista.deseleccionar();
             }

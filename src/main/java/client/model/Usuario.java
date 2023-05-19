@@ -158,7 +158,7 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
      */
     public void enviarMensaje(String mensaje) throws IOException {
         this.sesionChatActual.addMensaje(mensaje, true);
-        this.salida.println(mensaje);
+        this.salida.println("msg: " + mensaje);
     }
 
     /**
@@ -172,18 +172,10 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
         return mensaje;
     }
 
-    /**
-     * Desconecta el socket del usuario remoto. Cierra los streams de entrada y salida del socket.
-     * @throws IOException: Si hay un error al cerrar los streams de entrada y salida del socket.
-     */
     public void desconectar() throws IOException {
         this.addNuevaSesion(this.sesionChatActual);
         sesionChatActual = null;
-        this.socket.close();
-        this.socket = null;
-        this.salida = null;
-        this.entrada = null;
-        this.entradaSocket = null;
+        this.escuchando = false;
         this.solicitando = false;
     }
 
