@@ -68,6 +68,10 @@ public class SocketUsuario extends Thread {
     public void setInterlocutor(String interlocutor) {
         this.interlocutor = interlocutor;
     }
+    public void setEnChat(boolean enChat) {
+        this.enChat = enChat;
+    }
+
 
     private void escucharSolicitudes() throws IOException {
         String mensaje = this.entrada.readLine();
@@ -93,7 +97,7 @@ public class SocketUsuario extends Thread {
             this.enChat = true;
             System.out.println("Usuario " + this.username + " ingreso al chat con " + this.interlocutor + ".");
 
-        } else {
+        } else if (this.interlocutor == null) {
             String usernameInterlocutor = Servidor.getInstance().procesarSolicitud(mensaje, this.username);
             if (usernameInterlocutor != null) {
                 this.enChat = true;
@@ -106,9 +110,22 @@ public class SocketUsuario extends Thread {
         }
     }
 
-    private void escucharMensajes() {
-        // TODO: Gestionar envio y recepcion de mensajes a traves del servidor usando el HashMap (filtrando por username).
-        // TODO: Gestionar cierre de sesion de chat (ajustar enChat y otras cosas).
+    private void escucharMensajes() throws IOException {
+        String codigo = this.entrada.readLine();
+
+        // Si el usuario salio del chat.
+        if (codigo.equals("504")) {
+            System.out.println("Usuario " + this.username + " salio de la sesion de chat.");
+            Servidor.getInstance().cerrarChat(this.interlocutor);
+            this.enChat = false;
+            this.interlocutor = null;
+
+        // Si su interlocutor le envio un mensaje
+        } else if (codigo.equals("351")) {
+            String mensaje = this.entrada.readLine();
+            Servidor.getInstance().enviarMensaje(this.interlocutor, mensaje);
+        }
+
     }
 
 }

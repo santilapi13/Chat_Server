@@ -31,6 +31,7 @@ public class ControladorChat implements ActionListener, Runnable  {
             public void windowClosing(WindowEvent e) {
                 try {
                     recibirMensajesThread.interrupt();
+                    Usuario.getInstance().getSalida().println("504");   // Se desconecto del chat
                     Usuario.getInstance().desconectar();
                     java.awt.Toolkit.getDefaultToolkit().beep();
                     ControladorPrincipal.getInstance().getVista().abrirVentana();
@@ -72,18 +73,20 @@ public class ControladorChat implements ActionListener, Runnable  {
     @Override
     public void run() {
         try {
-            // Lee el primer caracter para checkear que siga establecida la conexion
-            int sigueLeyendo = Usuario.getInstance().getSocket().getInputStream().read();
-            while (!Usuario.getInstance().getSocket().isInputShutdown() && !Usuario.getInstance().getSocket().isOutputShutdown() && sigueLeyendo != -1) {
-                try {
-                    String mensaje = (char) sigueLeyendo + Usuario.getInstance().recibirMensaje();
-                    if (mensaje != null && !mensaje.isEmpty()) {
-                        java.awt.Toolkit.getDefaultToolkit().beep();
-                        vista.agregarMensaje(Usuario.getInstance().getSesionActual().getRemoto().getUsername() + ": " + mensaje);
-                    }
-                } catch (IOException e) {}
-                sigueLeyendo = Usuario.getInstance().getSocket().getInputStream().read();
+            boolean conexionEstablecida = true;
+            while (conexionEstablecida) {
+                String codigo = Usuario.getInstance().getEntrada().readLine();
+
+                // Si su interlocutor salio del chat.
+                if (codigo.equals("504")) {
+                    conexionEstablecida = false;
+
+                // Si su interlocutor le envio un mensaje.
+                } else if (codigo.equals("351")) {
+                    vista.agregarMensaje(Usuario.getInstance().getSesionActual().getRemoto().getUsername() + ": " + Usuario.getInstance().recibirMensaje());
+                }
             }
+            Usuario.getInstance().getSalida().println("504");
             Usuario.getInstance().desconectar();
             ControladorPrincipal.getInstance().getVista().abrirVentana();
             java.awt.Toolkit.getDefaultToolkit().beep();

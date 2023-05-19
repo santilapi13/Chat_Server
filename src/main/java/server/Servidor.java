@@ -69,8 +69,16 @@ public class Servidor {
         return usernameInterlocutor;
     }
 
-    public void escucharMensajes() throws IOException {
+    public void cerrarChat(String username) {
+        SocketUsuario usuario = this.usuarios.get(username);
+        if (usuario.getInterlocutor() != null)
+            usuario.getSalida().println("504");
+    }
 
+    public void enviarMensaje(String username, String mensaje) {
+        SocketUsuario usuario = this.usuarios.get(username);
+        usuario.getSalida().println("351");
+        usuario.getSalida().println(mensaje);
     }
 
 }

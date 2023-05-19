@@ -15,8 +15,8 @@
     <list default="true" id="c0e1c2e3-4c14-42d3-aa18-5f272a77448b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/ControladorChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/ControladorChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/ControladorPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/ControladorPrincipal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/model/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Servidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Servidor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/SocketUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/SocketUsuario.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -238,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684499448352</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="En Servidor: planteo de escucharMensajes con atributo enChat.">
+      <created>1684500743348</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1684500743348</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -254,7 +261,8 @@
     <MESSAGE value="Anda el registro de usuarios. Corregir deslogeo al cerrar Ventana Principal." />
     <MESSAGE value="Anda deslogeo de ventana principal. Arreglar solicitudes de chats." />
     <MESSAGE value="Sesiones terminadas. Falta envio y recepcion de mensajes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Sesiones terminadas. Falta envio y recepcion de mensajes." />
+    <MESSAGE value="En Servidor: planteo de escucharMensajes con atributo enChat." />
+    <option name="LAST_COMMIT_MESSAGE" value="En Servidor: planteo de escucharMensajes con atributo enChat." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

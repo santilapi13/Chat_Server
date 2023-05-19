@@ -158,7 +158,10 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
      */
     public void enviarMensaje(String mensaje) throws IOException {
         this.sesionChatActual.addMensaje(mensaje, true);
-        this.salida.println("msg: " + mensaje);
+        this.salida.println("351");
+        System.out.println("Codigo enviado (desde clase Usuario).");
+        this.salida.println(mensaje);
+        System.out.println("Mensaje enviado (desde clase Usuario).");
     }
 
     /**
