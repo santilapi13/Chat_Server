@@ -57,7 +57,7 @@ public class ControladorPrincipal implements ActionListener {
         try {
             if (comando.equalsIgnoreCase("")) {
                 if (!Usuario.getInstance().isEscuchando()) {
-                    Usuario.getInstance().setUsername(((VentanaPrincipal) vista).getUsername());
+                    Usuario.getInstance().activarModoEscucha();
                 } else {
                     Usuario.getInstance().desactivarModoEscucha();
                 }
@@ -66,6 +66,7 @@ public class ControladorPrincipal implements ActionListener {
 
                 String ip = vista.getDireccionIP();
                 String puerto = vista.getPuertoIP();
+                System.out.println("IP:ssssss" + ip + " Puerto: " + puerto);
                 CredencialesUsuario credencialesUsuarioReceptor = new CredencialesUsuario(ip, Integer.parseInt(puerto), "");
                 Usuario.getInstance().solicitarChat(credencialesUsuarioReceptor);
 

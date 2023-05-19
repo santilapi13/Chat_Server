@@ -89,6 +89,7 @@ public class Usuario implements GestorSesiones, EnvioMensajes, GestorConexion {
 
     public void registrarseEnServidor(String IP, int puerto, String usuario) throws IOException {
         this.socket = new Socket(IP, puerto, null, this.credencialesUsuario.getPuerto());
+            //TODO: LEER! tal vez en vez de guardar null deberia guardar la del dispositvo, pq localAddr sera siempre 127 meparece.
         this.credencialesUsuario.setUsername(usuario);
         iniciarESSockets();
     }
@@ -109,7 +110,7 @@ public class Usuario implements GestorSesiones, EnvioMensajes, GestorConexion {
         this.salida.println(this.credencialesUsuario.getUsername());
     }
 
-    private void activarModoEscucha() throws IOException {
+    public void activarModoEscucha() throws IOException {
         this.salida.println("300");
         escuchando = true;
         System.out.println("Modo escucha activado.");
@@ -123,8 +124,14 @@ public class Usuario implements GestorSesiones, EnvioMensajes, GestorConexion {
 
     public void solicitarChat(CredencialesUsuario credencialesUsuarioReceptor) throws IOException {
         String IP = credencialesUsuarioReceptor.getIP();
-        if (IP.equals("localhost"))
-            IP = InetAddress.getLocalHost().getHostAddress();
+
+        if (IP.equals("localhost")){
+            InetAddress localAddress = socket.getLocalAddress();
+            System.out.println("Dirección IP local: " + localAddress.getHostAddress());
+            IP = localAddress.getHostAddress();
+        }
+
+        System.out.println("Solicitando chat a " + IP + ":" + credencialesUsuarioReceptor.getPuerto());
         this.salida.println(IP + " " + credencialesUsuarioReceptor.getPuerto());
         this.solicitando = true;
         //this.iniciarSesionChat();
