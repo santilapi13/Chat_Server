@@ -52,20 +52,18 @@ public class Servidor {
         String[] partes = mensaje.split(" ");
         String IP = partes[0];
         int puerto = Integer.parseInt(partes[1]);
+        System.out.println("Usuario " + username + " solicito iniciar un chat con " + IP + ":" + puerto + ".");
         String usernameInterlocutor = null;
 
         // Busca el usuario con el que quiere establecer conexion.
         for (Map.Entry<String, SocketUsuario> entry : this.usuarios.entrySet()) {
             SocketUsuario v = entry.getValue();
 
-            System.out.println(IP+""+puerto+""+v.isEscuchando()+" "+v.getSocket().getInetAddress().getHostAddress()+" "+v.getSocket().getPort());
-            System.out.println(v.getSocket().getInetAddress().getHostAddress().equals(IP));
-            System.out.println(v.getSocket().getPort() == puerto);
             // Si el IP y puerto ingresados coinciden con alguno, los vincula (setea el interlocutor).
             if (v.isEscuchando() && v.getSocket().getInetAddress().getHostAddress().equals(IP) && v.getSocket().getPort() == puerto) {
                 v.setInterlocutor(username);
                 usernameInterlocutor = v.getUsername();
-                System.out.println("Usuario " + username + " se conecto con " + v.getUsername());
+                v.getSalida().println(username);
             }
         }
         return usernameInterlocutor;

@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @author : Grupo 4 - Avalos, Lapiana y Sosa
  */
 
-public class Usuario implements GestorSesiones, EnvioMensajes, GestorConexion {
+public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorConexion {
     private CredencialesUsuario credencialesUsuario;
     private Socket socket;
     private InputStreamReader entradaSocket;
@@ -24,7 +24,6 @@ public class Usuario implements GestorSesiones, EnvioMensajes, GestorConexion {
     private boolean escuchando;
     private ArrayList<SesionChat> sesionesAnteriores;
     private SesionChat sesionChatActual;
-
     private boolean solicitando = false;
 
      //PATRON SINGLETON
@@ -96,8 +95,6 @@ public class Usuario implements GestorSesiones, EnvioMensajes, GestorConexion {
 
     /**
      * Inicia los streams de entrada y salida del socket. Envia el username al receptor y recibe el username del usuario remoto.
-     * Instancia una nueva sesion, asignandola al atributo sesionActual, con la IP, puerto y username del usuario remoto.
-     * En caso de que sea el solicitante de la sesion de chat, invoca la creacion de la ventana de chat.<br>
      * <b>Pre:</b> El socket debe estar conectado al usuario remoto.<br>
      * <b>Post:</b> Se ha iniciado los streams de entrada y salida del socket. Se ha instanciado una nueva sesion con la IP, puerto y username del usuario remoto.
      *
@@ -110,10 +107,18 @@ public class Usuario implements GestorSesiones, EnvioMensajes, GestorConexion {
         this.salida.println(this.credencialesUsuario.getUsername());
     }
 
-    public void activarModoEscucha() throws IOException {
+     @Override
+     public void run() {
+        try {
+            this.activarModoEscucha();
+        } catch (IOException e) {}
+     }
+
+    private void activarModoEscucha() throws IOException {
         this.salida.println("300");
         escuchando = true;
         System.out.println("Modo escucha activado.");
+        this.iniciarSesionChat();
     }
 
     public void desactivarModoEscucha() throws IOException {
@@ -127,24 +132,22 @@ public class Usuario implements GestorSesiones, EnvioMensajes, GestorConexion {
 
         if (IP.equals("localhost")){
             InetAddress localAddress = socket.getLocalAddress();
-            System.out.println("Dirección IP local: " + localAddress.getHostAddress());
             IP = localAddress.getHostAddress();
         }
 
-        System.out.println("Solicitando chat a " + IP + ":" + credencialesUsuarioReceptor.getPuerto());
         this.salida.println(IP + " " + credencialesUsuarioReceptor.getPuerto());
         this.solicitando = true;
-        //this.iniciarSesionChat();
     }
 
-    private void iniciarSesionChat() throws IOException {
+    public void iniciarSesionChat() throws IOException {
         String usernameRemoto = this.entrada.readLine();
-        this.sesionChatActual = new SesionChat(this.credencialesUsuario, new CredencialesUsuario(this.socket.getInetAddress().toString(), this.socket.getPort(), usernameRemoto));
-
-        if (this.solicitando) {
-            ControladorChat.getInstance().nuevaVentana();
-        } else {
-            ControladorPrincipal.getInstance().agregarUsuario(usernameRemoto);
+        System.out.println("Usuario remoto: " + usernameRemoto);
+        if (this.escuchando || this.solicitando) {
+            this.sesionChatActual = new SesionChat(this.credencialesUsuario, new CredencialesUsuario(this.socket.getInetAddress().toString(), this.socket.getPort(), usernameRemoto));
+            if (this.solicitando)
+                ControladorChat.getInstance().nuevaVentana();
+            else
+                ControladorPrincipal.getInstance().agregarUsuario(usernameRemoto);
         }
     }
 

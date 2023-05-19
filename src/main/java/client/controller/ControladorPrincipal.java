@@ -57,7 +57,8 @@ public class ControladorPrincipal implements ActionListener {
         try {
             if (comando.equalsIgnoreCase("")) {
                 if (!Usuario.getInstance().isEscuchando()) {
-                    Usuario.getInstance().activarModoEscucha();
+                    Thread hilo = new Thread(Usuario.getInstance());
+                    hilo.start();
                 } else {
                     Usuario.getInstance().desactivarModoEscucha();
                 }
@@ -66,18 +67,19 @@ public class ControladorPrincipal implements ActionListener {
 
                 String ip = vista.getDireccionIP();
                 String puerto = vista.getPuertoIP();
-                System.out.println("IP:ssssss" + ip + " Puerto: " + puerto);
                 CredencialesUsuario credencialesUsuarioReceptor = new CredencialesUsuario(ip, Integer.parseInt(puerto), "");
                 Usuario.getInstance().solicitarChat(credencialesUsuarioReceptor);
 
                 String respuesta = Usuario.getInstance().getEntrada().readLine();
+
+                // Solicitud aceptada
                 if (respuesta.equalsIgnoreCase("200")) {
+                    Usuario.getInstance().iniciarSesionChat();
 
-                    // TODO: Abrir ventana de chat esperando al otro.
-
+                // Error en solicitud: no encontrado
                 } else if (respuesta.equalsIgnoreCase("404")) {
                     java.awt.Toolkit.getDefaultToolkit().beep();
-                    JOptionPane.showMessageDialog(null, "ERROR: Compruebe IP y puertos.");
+                    JOptionPane.showMessageDialog(null, "ERROR: Compruebe IP y puertos. Recuerde el otro usuario debe estar en modo escucha.");
                 }
 
             }

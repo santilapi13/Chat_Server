@@ -20,7 +20,7 @@ public class SocketUsuario extends Thread {
     public void run() {
         while (true) {
             try {
-                if (this.interlocutor == null) { //TODO: && modo escucha activado
+                if (this.interlocutor == null) {
                     this.escucharSolicitudes();
                 } else
                     this.escucharMensajes();
@@ -77,10 +77,12 @@ public class SocketUsuario extends Thread {
 
         // Si el usuario activo el modo escucha.
         } else if (mensaje.equals("300")) {
+            System.out.println("Usuario " + this.username + " activo el modo escucha.");
             this.escuchando = true;
 
         // Si el usuario desactivo el modo escucha.
         } else if (mensaje.equals("301")) {
+            System.out.println("Usuario " + this.username + " desactivo el modo escucha.");
             this.escuchando = false;
 
         } else {
@@ -88,6 +90,8 @@ public class SocketUsuario extends Thread {
             if (usernameInterlocutor != null) {
                 this.interlocutor = usernameInterlocutor;
                 this.salida.println("200");
+                System.out.println("Usuario " + username + " se conecto con " + this.interlocutor + ".");
+                this.salida.println(this.interlocutor);
             } else
                 this.salida.println("404");
         }
