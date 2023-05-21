@@ -5,19 +5,19 @@
   </component>
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="Chat_P2P:jar" />
+      <artifact name="Chat_Server1123:jar" />
+      <artifact name="Chat_Server1234:jar" />
+      <artifact name="Server:jar" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0e1c2e3-4c14-42d3-aa18-5f272a77448b" name="Changes" comment="En Servidor: planteo de escucharMensajes con atributo enChat.">
+    <list default="true" id="c0e1c2e3-4c14-42d3-aa18-5f272a77448b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Chat_P2P_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/ControladorRegistro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/ControladorRegistro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/model/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/VentanaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/VentanaPrincipal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/Servidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Servidor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,20 +57,16 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/wencho/facu/teoria info/tp/Chat_Server",
+    "last_opened_file_path": "D:/Santi/Facultad/Análisis y Diseño de Sistemas II/TPs/Chat_Server",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "fileTemplates"
+    "settings.editor.selected.configurable": "preferences.intentionPowerPack"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Santi\Facultad\Análisis y Diseño de Sistemas II\TPs\Chat_P2P\src\main\java\view" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="client.model" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Prueba2">
@@ -157,7 +153,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1682626763241</updated>
-      <workItem from="1684632461462" duration="4387000" />
     </task>
     <task id="LOCAL-00001" summary="Primer commit. Clases basicas del modelo. Falta terminar de implementar tema sockets.">
       <created>1682633226826</created>
@@ -252,20 +247,6 @@
     </task>
     <option name="localTasksCounter" value="14" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Primer commit. Clases basicas del modelo. Falta terminar de implementar tema sockets." />
