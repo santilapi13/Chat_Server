@@ -115,12 +115,12 @@ public class VentanaPrincipal extends JFrame implements IVista, KeyListener, Mou
 		textFieldIP = new JTextField();
 		textFieldIP.setColumns(10);
 		textFieldIP.addKeyListener(this);
-		setPlaceholderText(textFieldIP, "Ingrese dirección IP...");
+		setPlaceholderText(textFieldIP, "Ingrese dirección IP");
 
 		textFieldPuerto = new JTextField();
 		textFieldPuerto.setColumns(10);
 		textFieldPuerto.addKeyListener(this);
-		setPlaceholderText(textFieldPuerto, "Ingrese puerto IP...");
+		setPlaceholderText(textFieldPuerto, "Ingrese puerto IP");
 
 		JLabel lblNewLabel_5 = new JLabel("Puerto IP");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 11));

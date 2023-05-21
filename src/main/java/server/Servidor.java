@@ -11,11 +11,14 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class Servidor {
     private HashMap<String, SocketUsuario> usuarios = new HashMap<String, SocketUsuario>();
     private ServerSocket socketServer;
     private static Servidor instance;
+
+    private String password = generarNumero();
 
     public static Servidor getInstance() throws IOException {
         if (instance == null)
@@ -36,6 +39,7 @@ public class Servidor {
         if (!this.usuarios.containsKey(socketUsuario.getUsername())) {
             System.out.println("Usuario registrado: " + socketUsuario.getUsername());
             socketUsuario.getSalida().println("200");
+            socketUsuario.getSalida().println(this.password);
             this.usuarios.put(socketUsuario.getUsername(), socketUsuario);
             socketUsuario.start();
         } else
@@ -78,6 +82,18 @@ public class Servidor {
         SocketUsuario usuario = this.usuarios.get(username);
         usuario.getSalida().println("351");
         usuario.getSalida().println(mensaje);
+    }
+
+    public String generarNumero() {
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < 8; i++) {
+            int numero = random.nextInt(9) + 1; // Genera un número aleatorio entre 1 y 9
+            sb.append(numero);
+        }
+
+        return sb.toString();
     }
 
 }

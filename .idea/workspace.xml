@@ -14,7 +14,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c0e1c2e3-4c14-42d3-aa18-5f272a77448b" name="Changes" comment="En Servidor: planteo de escucharMensajes con atributo enChat.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/ControladorChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/ControladorChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/ControladorRegistro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/ControladorRegistro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/model/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/VentanaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/VentanaPrincipal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/Servidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Servidor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -155,7 +157,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1682626763241</updated>
-      <workItem from="1684632461462" duration="3224000" />
+      <workItem from="1684632461462" duration="4387000" />
     </task>
     <task id="LOCAL-00001" summary="Primer commit. Clases basicas del modelo. Falta terminar de implementar tema sockets.">
       <created>1682633226826</created>

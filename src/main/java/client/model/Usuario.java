@@ -29,6 +29,8 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
     private SesionChat sesionChatActual;
     private boolean solicitando = false;
 
+    private String password;
+
      //PATRON SINGLETON
     private static Usuario instance;
     private Usuario() throws UnknownHostException {
@@ -163,7 +165,7 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
 
         String mensajeEncriptado;
         try {
-            mensajeEncriptado = encriptar("12345678", mensaje, "DES");
+            mensajeEncriptado = encriptar(this.password, mensaje, "DES");
         } catch (Exception e) {
             e.printStackTrace();
             return; // Manejo del error de encriptación
@@ -198,7 +200,7 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
         // Desencriptar el mensaje
         String mensajeDesencriptado;
         try {
-            mensajeDesencriptado = desencriptar("12345678", mensajeEncriptado, "DES");
+            mensajeDesencriptado = desencriptar(this.password, mensajeEncriptado, "DES");
         } catch (Exception e) {
             e.printStackTrace();
             return null; // Manejo del error de desencriptación
@@ -224,4 +226,7 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
         this.solicitando = false;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
