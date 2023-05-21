@@ -17,6 +17,10 @@ public class ControladorChat implements ActionListener, Runnable  {
     private static ControladorChat instance;
 
     private Thread recibirMensajesThread;
+    private boolean conexionEstablecida = true;
+
+    private boolean cerroVentana = false;
+
 
     private ControladorChat() {
     }
@@ -30,7 +34,8 @@ public class ControladorChat implements ActionListener, Runnable  {
             @Override
             public void windowClosing(WindowEvent e) {
                 try {
-                    recibirMensajesThread.interrupt();
+                    cerroVentana = true;
+                    ControladorChat.getInstance().conexionEstablecida = false;
                     Usuario.getInstance().getSalida().println("504");   // Se desconecto del chat
                     Usuario.getInstance().desconectar();
                     java.awt.Toolkit.getDefaultToolkit().beep();
@@ -73,24 +78,30 @@ public class ControladorChat implements ActionListener, Runnable  {
     @Override
     public void run() {
         try {
-            boolean conexionEstablecida = true;
+            this.conexionEstablecida = true;
             while (conexionEstablecida) {
-                String codigo = Usuario.getInstance().getEntrada().readLine();
+                String codigo = null;
+
+                if (!cerroVentana)
+                    codigo = Usuario.getInstance().getEntrada().readLine();
 
                 // Si su interlocutor salio del chat.
                 if (codigo.equals("504")) {
                     conexionEstablecida = false;
 
-                // Si su interlocutor le envio un mensaje.
+                    // Si su interlocutor le envio un mensaje.
                 } else if (codigo.equals("351")) {
                     vista.agregarMensaje(Usuario.getInstance().getSesionActual().getRemoto().getUsername() + ": " + Usuario.getInstance().recibirMensaje());
                 }
             }
-            Usuario.getInstance().getSalida().println("504");
-            Usuario.getInstance().desconectar();
-            ControladorPrincipal.getInstance().getVista().abrirVentana();
-            java.awt.Toolkit.getDefaultToolkit().beep();
-            ((VentanaChat) vista).dispose();
+            if (!cerroVentana) {
+                Usuario.getInstance().getSalida().println("504");
+                Usuario.getInstance().desconectar();
+                ControladorPrincipal.getInstance().getVista().abrirVentana();
+                java.awt.Toolkit.getDefaultToolkit().beep();
+                ((VentanaChat) vista).dispose();
+            }
+            cerroVentana = false;
         } catch (IOException e) {
         }
     }

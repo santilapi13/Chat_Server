@@ -71,8 +71,7 @@ public class Servidor {
 
     public void cerrarChat(String username) {
         SocketUsuario usuario = this.usuarios.get(username);
-        if (usuario.getInterlocutor() != null)
-            usuario.getSalida().println("504");
+        usuario.getSalida().println("504");
     }
 
     public void enviarMensaje(String username, String mensaje) {
