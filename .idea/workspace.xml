@@ -6,8 +6,6 @@
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
       <artifact name="Chat_Server:jar" />
-      <artifact name="Chat_Server:jar2" />
-      <artifact name="Chat_Server:jar3" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -15,18 +13,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0e1c2e3-4c14-42d3-aa18-5f272a77448b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Chat_Server_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Chat_Server_jar2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Chat_Server_jar3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Chat_Server1123_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Chat_Server1234_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Server_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Chat_Server_jar2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Chat_Server_jar3.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Chat_Server1123_jar/Chat_Server.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Chat_Server1234_jar/Chat_Server.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Server_jar/Chat_Server.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Pruebas/Prueba1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Pruebas/Prueba1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Pruebas/Prueba2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Pruebas/Prueba2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Chat_Server_jar/Chat_Server.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Chat_Server_jar/Chat_Server.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Chat_Server_jar2/Chat_Server.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Chat_Server_jar3/Chat_Server.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -262,7 +254,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684700269777</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Correccion de .jar">
+      <created>1684701730047</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1684701730047</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -280,7 +279,8 @@
     <MESSAGE value="Sesiones terminadas. Falta envio y recepcion de mensajes." />
     <MESSAGE value="En Servidor: planteo de escucharMensajes con atributo enChat." />
     <MESSAGE value="Build de .jar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Build de .jar" />
+    <MESSAGE value="Correccion de .jar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correccion de .jar" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
