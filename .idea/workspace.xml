@@ -5,9 +5,9 @@
   </component>
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="Chat_Server1123:jar" />
-      <artifact name="Chat_Server1234:jar" />
-      <artifact name="Server:jar" />
+      <artifact name="Chat_Server:jar" />
+      <artifact name="Chat_Server:jar2" />
+      <artifact name="Chat_Server:jar3" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -15,8 +15,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0e1c2e3-4c14-42d3-aa18-5f272a77448b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Chat_P2P_jar.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Chat_Server_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Chat_Server_jar2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Chat_Server_jar3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Chat_Server1123_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Chat_Server1234_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Server_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Chat_Server1123_jar/Chat_Server.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Chat_Server1234_jar/Chat_Server.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Server_jar/Chat_Server.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Pruebas/Prueba1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Pruebas/Prueba1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Pruebas/Prueba2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Pruebas/Prueba2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,24 +62,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "D:/Santi/Facultad/Análisis y Diseño de Sistemas II/TPs/Chat_Server",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.intentionPowerPack"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Santi/Facultad/Análisis y Diseño de Sistemas II/TPs/Chat_Server&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.intentionPowerPack&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Santi\Facultad\Análisis y Diseño de Sistemas II\TPs\Chat_P2P\src\main\java\view" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Prueba2">
+  <component name="RunManager" selected="Application.Prueba1">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="server.Main" />
       <module name="Chat_Server" />
@@ -137,8 +147,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Prueba2" />
         <item itemvalue="Application.Prueba1" />
+        <item itemvalue="Application.Prueba2" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.VentanaRegistro" />
         <item itemvalue="Application.VentanaPrincipal" />
@@ -245,7 +255,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684500743348</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Build de .jar">
+      <created>1684700269777</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1684700269777</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -262,7 +279,8 @@
     <MESSAGE value="Anda deslogeo de ventana principal. Arreglar solicitudes de chats." />
     <MESSAGE value="Sesiones terminadas. Falta envio y recepcion de mensajes." />
     <MESSAGE value="En Servidor: planteo de escucharMensajes con atributo enChat." />
-    <option name="LAST_COMMIT_MESSAGE" value="En Servidor: planteo de escucharMensajes con atributo enChat." />
+    <MESSAGE value="Build de .jar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Build de .jar" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

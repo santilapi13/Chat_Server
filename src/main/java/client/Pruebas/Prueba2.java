@@ -12,7 +12,6 @@ public class Prueba2 {
         int puerto=1123;
         Usuario.getInstance().setPuerto(puerto);
         System.out.println("Mi puerto es: " + Usuario.getInstance().getPuerto());
-        System.out.println("Mi IP es: " + InetAddress.getLocalHost());
 
         ControladorRegistro.getInstance();
 
