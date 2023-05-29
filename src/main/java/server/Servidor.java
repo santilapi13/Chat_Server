@@ -85,6 +85,7 @@ public class Servidor {
 
     public void enviarMensaje(String username, String mensaje) {
         SocketUsuario usuario = this.usuarios.get(username);
+        System.out.println("Enviando mensaje a " + username + "...");
         usuario.getSalida().println("351");
         usuario.getSalida().println(mensaje);
     }

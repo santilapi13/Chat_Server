@@ -174,9 +174,7 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
         System.out.println(mensajeEncriptado);
         this.sesionChatActual.addMensaje(mensaje, true);
         this.salida.println("351");
-        System.out.println("Codigo enviado (desde clase Usuario).");
         this.salida.println(mensajeEncriptado);
-        System.out.println("Mensaje enviado (desde clase Usuario).");
     }
 
     public String encriptar(String pass, String texto, String algoritmo) throws Exception {

@@ -123,6 +123,7 @@ public class SocketUsuario extends Thread {
         // Si su interlocutor le envio un mensaje
         } else if (codigo.equals("351")) {
             String mensaje = this.entrada.readLine();
+            System.out.println("Usuario " + this.username + " quiere enviar un mensaje.");
             Servidor.getInstance().enviarMensaje(this.interlocutor, mensaje);
         }
 
