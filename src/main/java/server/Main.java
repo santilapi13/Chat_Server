@@ -9,7 +9,7 @@ public class Main {
                 Servidor.getInstance().setPuerto(2345); // Por defecto es 2345
             else
                 Servidor.getInstance().setPuerto(Integer.parseInt(args[0]));
-            ControladorNuevos.getInstance().start();
+            ControladorNuevosUsuarios.getInstance().start();
 
         } catch (IOException e) {
             throw new RuntimeException(e);

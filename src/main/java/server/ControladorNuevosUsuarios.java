@@ -2,19 +2,19 @@ package server;
 
 import java.io.IOException;
 
-public class ControladorNuevos extends Thread {
+public class ControladorNuevosUsuarios extends Thread {
 
     //singleton
-    private static ControladorNuevos instance;
+    private static ControladorNuevosUsuarios instance;
 
-    public static ControladorNuevos getInstance() {
+    public static ControladorNuevosUsuarios getInstance() {
         if (instance == null) {
-            instance = new ControladorNuevos();
+            instance = new ControladorNuevosUsuarios();
         }
         return instance;
     }
 
-    private ControladorNuevos() {
+    private ControladorNuevosUsuarios() {
     }
 
     @Override

@@ -26,7 +26,7 @@ public class VentanaRegistro extends JFrame implements IVista, KeyListener, Mous
         getContentPane().setLayout(new GridLayout(1, 1)); // Utilizar GridLayout para reorganizar los componentes
 
         // Crear panel para agrupar los campos de texto y los labels
-        JPanel panel = new JPanel(new GridLayout(8, 2));
+        JPanel panel = new JPanel(new GridLayout(0, 1));
 
         // Crear labels
         JLabel labelUsuario = new JLabel("   Nombre de Usuario:");
