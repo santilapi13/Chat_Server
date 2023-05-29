@@ -12,7 +12,8 @@ public class VentanaRegistro extends JFrame implements IVista, KeyListener, Mous
 
     private JTextField campoUsuario;
     private JTextField campoDireccionIP;
-    private JTextField campoPuertoIP;
+    private JTextField campoPuertoServer;
+    private JTextField campoPuertoUsuario;
     private JButton btnRegistrarse;
 
     private ActionListener actionListener;
@@ -30,10 +31,12 @@ public class VentanaRegistro extends JFrame implements IVista, KeyListener, Mous
         // Crear labels
         JLabel labelUsuario = new JLabel("   Nombre de Usuario:");
         labelUsuario.setFont(new Font("Tahoma", Font.BOLD, 11));
+        JLabel labelPuertoUsuario = new JLabel("   Puerto:");
+        labelPuertoUsuario.setFont(new Font("Tahoma", Font.BOLD, 11));
         JLabel labelDireccionIP = new JLabel("   Direcci\u00F3n IP de Servidor:");
         labelDireccionIP.setFont(new Font("Tahoma", Font.BOLD, 11));
-        JLabel labelPuertoIP = new JLabel("   Puerto IP de Servidor:");
-        labelPuertoIP.setFont(new Font("Tahoma", Font.BOLD, 11));
+        JLabel labelPuertoServer = new JLabel("   Puerto del Servidor:");
+        labelPuertoServer.setFont(new Font("Tahoma", Font.BOLD, 11));
 
 
 
@@ -51,6 +54,19 @@ public class VentanaRegistro extends JFrame implements IVista, KeyListener, Mous
         };
         campoUsuario.setUI(new BasicTextFieldUI());
 
+        // Crear campo de texto para Puerto de Usuario
+        campoPuertoUsuario = new JTextField() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                if (getText().isEmpty()) {
+                    g.setColor(Color.LIGHT_GRAY); // Establecer el color de texto gris claro
+                    g.drawString("Ingrese su puerto...", getInsets().left, (getHeight() + getFont().getSize()) / 2);
+                }
+            }
+        };
+        campoPuertoUsuario.setUI(new BasicTextFieldUI());
+
         // Crear campo de texto para Dirección IP de Servidor
         campoDireccionIP = new JTextField() {
             @Override
@@ -64,26 +80,28 @@ public class VentanaRegistro extends JFrame implements IVista, KeyListener, Mous
         };
         campoDireccionIP.setUI(new BasicTextFieldUI());
 
-        // Crear campo de texto para Puerto IP de Servidor
-        campoPuertoIP = new JTextField() {
+        // Crear campo de texto para Puerto de Servidor
+        campoPuertoServer = new JTextField() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 if (getText().isEmpty()) {
                     g.setColor(Color.LIGHT_GRAY); // Establecer el color de texto gris claro
-                    g.drawString("Ingrese puerto IP de servidor...", getInsets().left, (getHeight() + getFont().getSize()) / 2);
+                    g.drawString("Ingrese puerto del servidor...", getInsets().left, (getHeight() + getFont().getSize()) / 2);
                 }
             }
         };
-        campoPuertoIP.setUI(new BasicTextFieldUI());
+        campoPuertoServer.setUI(new BasicTextFieldUI());
 
         // Agregar los componentes al panel
         panel.add(labelUsuario);
         panel.add(campoUsuario);
+        panel.add(labelPuertoUsuario);
+        panel.add(campoPuertoUsuario);
         panel.add(labelDireccionIP);
         panel.add(campoDireccionIP);
-        panel.add(labelPuertoIP);
-        panel.add(campoPuertoIP);
+        panel.add(labelPuertoServer);
+        panel.add(campoPuertoServer);
 
         // Agregar el panel a la ventana
         getContentPane().add(panel);
@@ -98,7 +116,8 @@ public class VentanaRegistro extends JFrame implements IVista, KeyListener, Mous
 
         this.campoUsuario.addKeyListener(this);
         this.campoDireccionIP.addKeyListener(this);
-        this.campoPuertoIP.addKeyListener(this);
+        this.campoPuertoServer.addKeyListener(this);
+        this.campoPuertoUsuario.addKeyListener(this);
 
         // Hacer visible la ventana
         setVisible(true);
@@ -137,9 +156,17 @@ public class VentanaRegistro extends JFrame implements IVista, KeyListener, Mous
 
     @Override
     public String getPuertoIP() {
+        return null;
+    }
 
-        return this.campoPuertoIP.getText();
+    @Override
+    public String getPuertoServer() {
+        return this.campoPuertoServer.getText();
+    }
 
+    @Override
+    public String getPuertoUsuario() {
+        return this.campoPuertoUsuario.getText();
     }
 
     @Override
@@ -175,7 +202,7 @@ public class VentanaRegistro extends JFrame implements IVista, KeyListener, Mous
 
     @Override
     public void keyReleased(KeyEvent e) {
-        this.btnRegistrarse.setEnabled(!campoUsuario.getText().isEmpty() && !campoDireccionIP.getText().isEmpty() && !campoPuertoIP.getText().isEmpty());
+        this.btnRegistrarse.setEnabled(!campoUsuario.getText().isEmpty() && !campoPuertoUsuario.getText().isEmpty() && !campoDireccionIP.getText().isEmpty() && !campoPuertoServer.getText().isEmpty());
     }
 
     @Override

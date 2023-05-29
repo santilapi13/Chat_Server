@@ -34,7 +34,7 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
      //PATRON SINGLETON
     private static Usuario instance;
     private Usuario() throws UnknownHostException {
-        this.credencialesUsuario = new CredencialesUsuario(InetAddress.getLocalHost().getHostAddress(), 1234, "");
+        this.credencialesUsuario = new CredencialesUsuario(InetAddress.getLocalHost().getHostAddress(), "");
         this.escuchando = false;
         this.sesionesAnteriores = new ArrayList<>();
         this.sesionChatActual = null;
@@ -91,9 +91,9 @@ public class Usuario implements Runnable, GestorSesiones, EnvioMensajes, GestorC
         return salida;
     }
 
-    public void registrarseEnServidor(String IP, int puerto, String usuario) throws IOException {
-        this.socket = new Socket(IP, puerto, null, this.credencialesUsuario.getPuerto());
-            //TODO: LEER! tal vez en vez de guardar null deberia guardar la del dispositvo, pq localAddr sera siempre 127 meparece.
+    public void registrarseEnServidor(String IP, int puertoServer, String usuario, int puertoUsuario) throws IOException {
+        this.credencialesUsuario.setPuerto(puertoUsuario);
+        this.socket = new Socket(IP, puertoServer, null, puertoUsuario);
         this.credencialesUsuario.setUsername(usuario);
         iniciarESSockets();
     }

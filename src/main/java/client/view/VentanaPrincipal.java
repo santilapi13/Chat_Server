@@ -228,6 +228,16 @@ public class VentanaPrincipal extends JFrame implements IVista, KeyListener, Mou
 		return this.textFieldIP.getText();
 	}
 
+	@Override
+	public String getPuertoServer() {
+		return null;
+	}
+
+	@Override
+	public String getPuertoUsuario() {
+		return null;
+	}
+
 	public String getPuertoIP()
 	{
 		return this.textFieldPuerto.getText();

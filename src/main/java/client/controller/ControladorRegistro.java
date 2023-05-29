@@ -36,10 +36,11 @@ public class ControladorRegistro  implements ActionListener  {
         try {
             if (comando.equalsIgnoreCase("Registrarse")) {
                 String ip = vista.getDireccionIP();
-                int puerto = Integer.parseInt(vista.getPuertoIP());
+                int puertoServer = Integer.parseInt(vista.getPuertoServer());
+                int puertoUsuario = Integer.parseInt(vista.getPuertoUsuario());
                 String usuario = vista.getText();
 
-                Usuario.getInstance().registrarseEnServidor(ip, puerto, usuario);
+                Usuario.getInstance().registrarseEnServidor(ip, puertoServer, usuario, puertoUsuario);
 
                 int msg = Integer.parseInt(Usuario.getInstance().getEntrada().readLine());
 

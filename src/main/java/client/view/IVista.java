@@ -16,6 +16,10 @@ public interface IVista {
 
     String getPuertoIP();
 
+    String getPuertoServer();
+
+    String getPuertoUsuario();
+
     String getText();
     void agregarMensaje( String mensaje );
 

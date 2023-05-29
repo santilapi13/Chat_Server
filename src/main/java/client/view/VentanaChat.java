@@ -104,6 +104,16 @@ public class VentanaChat extends JFrame implements IVista, KeyListener {
     }
 
     @Override
+    public String getPuertoServer() {
+        return null;
+    }
+
+    @Override
+    public String getPuertoUsuario() {
+        return null;
+    }
+
+    @Override
     public String getText() {
         return this.textField.getText();
     }

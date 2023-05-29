@@ -5,8 +5,10 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
         try {
-
-            Servidor.getInstance();
+            if (args.length == 0)
+                Servidor.getInstance().setPuerto(2345); // Por defecto es 2345
+            else
+                Servidor.getInstance().setPuerto(Integer.parseInt(args[0]));
             ControladorNuevos.getInstance().start();
 
         } catch (IOException e) {

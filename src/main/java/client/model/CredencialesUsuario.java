@@ -11,6 +11,11 @@ public class CredencialesUsuario {
         this.username = username;
     }
 
+    public CredencialesUsuario(String IP, String username) {
+        this.IP = IP;
+        this.username = username;
+    }
+
     public String getIP() {
         return IP;
     }

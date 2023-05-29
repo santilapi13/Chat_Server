@@ -13,13 +13,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0e1c2e3-4c14-42d3-aa18-5f272a77448b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Chat_Server_jar2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Chat_Server_jar3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_5_2023_16_09_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_5_2023_16_09__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_5_2023_08_40_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_5_2023_08_40__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_5_2023_17_09_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_5_2023_17_09__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Chat_Server_jar/Chat_Server.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Chat_Server_jar/Chat_Server.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Chat_Server_jar2/Chat_Server.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Chat_Server_jar3/Chat_Server.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chat1123.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chat1234.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Pruebas/Prueba1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Pruebas/Prueba1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Pruebas/Prueba2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/ControladorRegistro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/ControladorRegistro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/model/CredencialesUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/model/CredencialesUsuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/model/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/IVista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/IVista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/VentanaChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/VentanaChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/VentanaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/VentanaPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/VentanaRegistro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/VentanaRegistro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Servidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Servidor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,13 +62,16 @@
     </option>
   </component>
   <component name="ProjectId" id="2P1Zt7QetCYVvfQM9yXDGUmiBGp" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
@@ -140,8 +156,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Prueba1" />
-        <item itemvalue="Application.Prueba2" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Prueba2" />
         <item itemvalue="Application.VentanaRegistro" />
         <item itemvalue="Application.VentanaPrincipal" />
       </list>
@@ -261,10 +277,18 @@
       <option name="project" value="LOCAL" />
       <updated>1684701730047</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary=".jar finales para entregar">
+      <created>1684702059574</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1684702059574</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Primer commit. Clases basicas del modelo. Falta terminar de implementar tema sockets." />
     <MESSAGE value="Sesion y Mensajes se cargan correctamente (falta username del remoto)." />
     <MESSAGE value="Usuario Runnable en vez de Thread." />
@@ -280,7 +304,8 @@
     <MESSAGE value="En Servidor: planteo de escucharMensajes con atributo enChat." />
     <MESSAGE value="Build de .jar" />
     <MESSAGE value="Correccion de .jar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correccion de .jar" />
+    <MESSAGE value=".jar finales para entregar" />
+    <option name="LAST_COMMIT_MESSAGE" value=".jar finales para entregar" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

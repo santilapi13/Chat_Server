@@ -17,6 +17,7 @@ public class Servidor {
     private HashMap<String, SocketUsuario> usuarios = new HashMap<String, SocketUsuario>();
     private ServerSocket socketServer;
     private static Servidor instance;
+    private int puerto;
 
     private String password = generarNumero();
 
@@ -26,12 +27,16 @@ public class Servidor {
         return instance;
     }
 
-    private Servidor() throws IOException {
-        this.socketServer = new ServerSocket(2345);
+    private Servidor() {
     }
 
     public HashMap<String, SocketUsuario> getUsuarios() {
         return usuarios;
+    }
+
+    public void setPuerto(int puerto) throws IOException {
+        this.puerto = puerto;
+        this.socketServer = new ServerSocket(puerto);
     }
 
     public void registrarUsuario(Socket socket) throws IOException {
